@@ -33,7 +33,7 @@ div.box1{
     color:#FFFFFF;
     text-align: center;
     
-    margin: 7vw;
+    margin: 3vw;
     border: 25px;
     padding: 35px;
     overflow:hidden;
@@ -77,6 +77,16 @@ h3{
     letter-spacing: 0.5vw;
     font-weight:90;
     text-align: center;
+}
+
+ul.circle {
+    color:#FFFFFF;
+    font-size: 1.3vw;
+    line-height: 2vw;
+    letter-spacing: 0.5vw;
+    font-weight:90;
+    text-align: left;
+    list-style-type: circle;
 }
 
 div.buttonBox{
