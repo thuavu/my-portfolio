@@ -26,3 +26,9 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+/* Request content from the server and add it to the html page */
+function requestContent() {
+    fetch('/data').then(response => response.text()).then((someText) => {
+    document.getElementById('body').innerHTML = someText});
+}
