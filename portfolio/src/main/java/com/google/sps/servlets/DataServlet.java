@@ -30,7 +30,7 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json;");
 
-    ArrayList<String> comments = new ArrayList<String>(); 
+    ArrayList<String> comments = new ArrayList<>(); 
     comments.add("<h3>Comment 1</h3>");
     comments.add("<h3>Another comment number 2</h3>");
     comments.add("<h3>A 3rd comment for testing</h3>");
