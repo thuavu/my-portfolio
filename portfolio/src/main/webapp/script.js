@@ -29,10 +29,6 @@ function addRandomGreeting() {
 
 /* Request content from the server and add it to the html page */
 function requestContent() {
-    /*
-    fetch('/data').then(response => response.text()).then((someText) => {
-    document.getElementById('body').innerHTML = someText});
-    */
     fetch('/data').then(response => response.json()).then((someTexts) => {
         const statsListElement = document.getElementById('body');
         statsListElement.innerHTML = someTexts;
