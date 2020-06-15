@@ -30,13 +30,13 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json;");
 
-    ArrayList<String> listValues = new ArrayList<String>(); 
-    listValues.add("<h3>Comment 1</h3>");
-    listValues.add("<h3>Another comment number 2</h3>");
-    listValues.add("<h3>A 3rd comment for testing</h3>");
+    ArrayList<String> comments = new ArrayList<String>(); 
+    comments.add("<h3>Comment 1</h3>");
+    comments.add("<h3>Another comment number 2</h3>");
+    comments.add("<h3>A 3rd comment for testing</h3>");
 
     Gson gson = new Gson();
-    String json = gson.toJson(listValues);
+    String json = gson.toJson(comments);
     response.getWriter().println(json);
   }
 }
