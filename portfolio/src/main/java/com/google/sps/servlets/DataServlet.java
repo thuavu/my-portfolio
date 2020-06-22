@@ -14,6 +14,14 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.gson.Gson;
+import com.google.sps.data.Comment;         //Comment class
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,42 +29,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.gson.Gson;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
+@WebServlet("/list-comments")
 public class DataServlet extends HttpServlet {
-
-  private List<String> comments = new ArrayList<>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+    
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+
+    // Datastore
+    List<Comment> comments = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
+        long id = entity.getKey().getId();
+        String text = (String) entity.getProperty("text");
+        long timestamp = (long) entity.getProperty("timestamp");
+
+        Comment commentNew = new Comment(id, text, timestamp);
+        comments.add(commentNew);
+
+        // Print in console to test
+        System.out.println(text);
+    }
+
     response.setContentType("application/json;");
     Gson gson = new Gson();
     String json = gson.toJson(comments);
     response.getWriter().println(json);
-  }
-
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Get the input from the form.
-    String text = getParameter(request, "text-input", "");
-
-    // Add text from the form to the comments ArrayList
-    comments.add(text);
-
-    // Print in console to test
-    System.out.println(text);
-
-    // Redirect back to the HTML page.
-    response.sendRedirect("/form.html");
-  }
-
-  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
-    String value = request.getParameter(name);
-    if (value == null) {
-        return defaultValue;
-    }
-    return value;
   }
 }
