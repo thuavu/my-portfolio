@@ -27,23 +27,26 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
-/* Request content from the server and add it to the html page */
-function requestContent() {
-    fetch('/data').then(response => response.json()).then((comments) => {
-
-        // Build the list of history entries.
-        const historyEl = document.getElementById('history');
-        comments.forEach((line) => {
-            historyEl.appendChild(createListElement(line));
-            console.log(line);
-        });
-
-    });
+/** Fetches comments from the server and adds them to the DOM. */
+function loadComments() {
+  fetch('/list-comments').then(response => response.json()).then((commentsList) => {
+    const commentListElement = document.getElementById('comment-history');
+    commentsList.forEach((comment) => {
+      commentListElement.appendChild(createCommentElement(comment));
+      console.log(comment);
+      console.log(commentListElement);
+    })
+  });
 }
 
-/** Creates an <h2> element containing text. */
-function createListElement(text) {
-  const h2Element = document.createElement('h2');
-  h2Element.innerText = text;
-  return h2Element;
-} 
+/** Creates an element that represents a comment */
+function createCommentElement(comment) {
+  const commentElement = document.createElement('li');
+  commentElement.className = 'comment';
+
+  const textElement = document.createElement('span');
+  textElement.innerText = comment.text;
+
+  commentElement.appendChild(textElement);
+  return commentElement;
+}
