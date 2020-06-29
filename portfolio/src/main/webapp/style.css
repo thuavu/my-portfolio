@@ -190,9 +190,45 @@ img.footerIcon{
     margin-right: auto;
 }
 
+textarea{
+    width: 50%;
+    height: 100px;
+    padding: 10px;
+    font: Arial, Helvetica, sans-serif;
+}
+
 button.buttonBox{
     margin:auto;
     border: #2B2B2B;
     width:20vw;
     background-color:#868686;	
+}
+
+.button01 {
+	color: #1A1A1A;
+		
+	background-color: #FFFFFF;
+	border: 1px solid;
+}
+
+.button01:hover {
+    background-color: #1F1F1F;
+    color: #FFFFFF;
+}
+
+#comment-list {
+  list-style-type: none;
+}
+
+.comment {
+  color:#FFFFFF;
+  border: thin solid #FFFFFF;
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  width: 30vw;
+}
+
+.comment span {
+  flex-grow: 1;
 }
