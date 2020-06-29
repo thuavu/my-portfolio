@@ -190,6 +190,13 @@ img.footerIcon{
     margin-right: auto;
 }
 
+textarea{
+    width: 50%;
+    height: 100px;
+    padding: 10px;
+    font: Arial, Helvetica, sans-serif;
+}
+
 button.buttonBox{
     margin:auto;
     border: #2B2B2B;
@@ -197,11 +204,16 @@ button.buttonBox{
     background-color:#868686;	
 }
 
-textarea{
-    width: 50%;
-    height: 100px;
-    padding: 10px;
-    font: Arial, Helvetica, sans-serif;
+.button01 {
+	color: #1A1A1A;
+		
+	background-color: #FFFFFF;
+	border: 1px solid;
+}
+
+.button01:hover {
+    background-color: #1F1F1F;
+    color: #FFFFFF;
 }
 
 #comment-list {
