@@ -45,9 +45,6 @@ public class DataServlet extends HttpServlet {
     // Add text from the form to the comments ArrayList
     comments.add(text);
 
-    // Print in console to test
-    System.out.println(text);
-
     // Redirect back to the HTML page.
     response.sendRedirect("/form.html");
   }
