@@ -50,7 +50,6 @@ public class DataServlet extends HttpServlet {
 
         Comment commentNew = new Comment(id, text, creationTime);
         comments.add(commentNew);
-
     }
 
     response.setContentType("application/json;");
