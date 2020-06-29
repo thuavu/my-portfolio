@@ -8,7 +8,7 @@
     <script src="script.js"></script>
   </head>
 
-  <body id="body" onload="loadComments()">
+  <body id="body" onload="requestContent()">
     <div class="outerBox">
         <a href="index.html"><img class="banner" src="images/BannerText.png"/></a>
         
@@ -23,18 +23,16 @@
         <h1>Form Page</h1>
 
         <div class="box1">
-            <form action="/new-comment" method="POST">
+            <form action="/data" method="POST">
                 <p>Enter comment:</p>
-                <textarea name="text"></textarea>
+                <textarea name="text-input"></textarea>
                 <br/><br/>
 
-                <button class="buttonBox button01"><h3>Submit<h3></button>
+                <input type="submit" />
             </form>
         </div>
 
-        <center>
-            <ul id="comment-history"></ul>
-        </center>
+        <h2 id="history"></h2>
 
     </div>
 
